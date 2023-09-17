@@ -90,7 +90,7 @@ agent any
             git commit -am "update it"
             """
             withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-               git push "https://github.com/kavin-bot/pythonargocd.git"
+               sh "git push https://github.com/kavin-bot/pythonargocd.git main"
 }
            }
         } 
