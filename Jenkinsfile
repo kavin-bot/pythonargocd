@@ -22,5 +22,15 @@ agent any
            }
         } 
    }
+    stage('docker build ')
+    {
+       steps
+      {
+        script
+          {
+            
+           }
+        } 
+   }
   }
 }
