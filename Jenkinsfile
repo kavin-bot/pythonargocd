@@ -84,6 +84,8 @@ agent any
         script
           {
             sh"""
+            git config --global user.name "kavin"
+            git config --global user.email "creatingkavin@gmail.com"
             git add deployment.yaml
             git commit -am "update it"
             """
