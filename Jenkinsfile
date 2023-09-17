@@ -1,5 +1,8 @@
 pipeline{
 agent any
+  environment{
+  DOCKER
+  }
   stages
   {
    stage('cleanup workspace')
@@ -23,6 +26,16 @@ agent any
         } 
    }
     stage('docker build ')
+    {
+       steps
+      {
+        script
+          {
+           docker_image = docker.build "${IMAGE_NAME}" 
+           }
+        } 
+   }
+    stage('docker push')
     {
        steps
       {
