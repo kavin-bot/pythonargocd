@@ -19,6 +19,18 @@ agent any
            }
         } 
    }
+    stages
+  {
+   stage('checkouts')
+    {
+       steps
+      {
+        script
+          {
+            git branch:'main', url:'https://github.com/kavin-bot/pythonargocd.git'
+           }
+        } 
+   }
     stage('docker build ')
     {
        steps
