@@ -13,25 +13,20 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: flask-app
+      - name: flask-app-container
         image: dockerkavin/pythonapp:v1
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 5000
 # service type loadbalancer       
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: myapp
-    k8s-app: myapp
   name: myapp
 spec:
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
+  - port: 80
     targetPort: 5000
   type: LoadBalancer
   selector:
