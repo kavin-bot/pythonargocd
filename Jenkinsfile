@@ -54,7 +54,7 @@ agent any
               sh """ 
                 docker login -u '$USER' -p '$PASS'
                 docker push "${IMAGE_NAME}":${IMAGE_TAG}
-                docker push "${IMAGE_NAME}" +"latest"
+                docker push "${IMAGE_NAME}"+":latest"
                 """
             }
            // docker.withRegistry('',REGISTRY_CREDS)
