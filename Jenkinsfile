@@ -18,9 +18,7 @@ agent any
       {
         script
           {
-            git credentialsId: 'github'
-            url:'https://github.com/kavin-bot/pythonargocd.git'
-            branch:'main'
+            git branch:'main', url:'https://github.com/kavin-bot/pythonargocd.git'
            }
         } 
    }
