@@ -49,11 +49,20 @@ agent any
       {
         script
           {
-            docker.withRegistry('',REGISTRY_CREDS)
-            docker_image.push("$BUILD_NUMBER")
-            docker_image.push('latest')
+            withCredentials([usernamePassword(credentialsId: 'dockerkavin', passwordVariable: 'PASS', usernameVariable: 'USER')]) 
+            {
+              sh """ 
+                docker login -u '$USER' -p '$PASS'
+                docker push "${IMAGE_NAME}":${IMAGE_TAG}
+                docker_image.push('latest')
+                """
+            }
+           // docker.withRegistry('',REGISTRY_CREDS)
+            //docker_image.push("$BUILD_NUMBER")
+            //docker_image.push('latest')
            }
         } 
    }
   }
+}
 }
