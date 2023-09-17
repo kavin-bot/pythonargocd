@@ -87,6 +87,9 @@ agent any
             git add deployment.yaml
             git commit -am "update it"
             """
+            withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+               git push "https://github.com/kavin-bot/pythonargocd.git"
+}
            }
         } 
    }
