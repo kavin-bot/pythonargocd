@@ -1,7 +1,11 @@
 pipeline{
 agent any
   environment{
-  DOCKER
+  DOCKERHUB_USERNAME= "dockerkavin"
+  APP_NAME = "pythonapp"
+  IMAGE_TAG= "${BUILD_NUMBER}"
+  IMAGE_NAME= "${DOCKERHUB_USERNAME}" +"/"+"${APP_NAME}"
+  REGISTRY_CREDS='dockerhub'
   }
   stages
   {
@@ -41,7 +45,9 @@ agent any
       {
         script
           {
-            
+            docker.withRegistry('',REGISTRY_CREDS)
+            docker_image.push("$BUILD_NUMBER")
+            docker_image.push('latest')
            }
         } 
    }
