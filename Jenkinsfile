@@ -77,6 +77,19 @@ agent any
            }
         } 
    }
+    stage('update the ScM')
+    {
+       steps
+      {
+        script
+          {
+            sh"""
+            git add deployment.yaml
+            git commit -am "update it"
+            """
+           }
+        } 
+   }
   }
 }
 
