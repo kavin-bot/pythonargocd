@@ -35,7 +35,11 @@ agent any
       {
         script
           {
-           docker_image = docker.build "${IMAGE_NAME}" 
+           //docker_image = docker.build "${IMAGE_NAME}" 
+            sh """
+
+               docker build -t "${IMAGE_NAME}" .
+               """
            }
         } 
    }
