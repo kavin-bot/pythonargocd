@@ -1,9 +1,8 @@
 pipeline{
 agent any
   stages{
-stage('cleanup workspace'){
-  script{
-    cleanWs()
+   stage('cleanup workspace'){
+      script{cleanWs()}
+   }
   }
-
 }
