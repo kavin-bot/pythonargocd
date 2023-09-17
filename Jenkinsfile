@@ -19,8 +19,6 @@ agent any
            }
         } 
    }
-    stages
-  {
    stage('checkouts')
     {
        steps
