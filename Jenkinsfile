@@ -38,7 +38,7 @@ agent any
            //docker_image = docker.build "${IMAGE_NAME}" 
             sh """
 
-               docker build -t "${IMAGE_NAME}" .
+               docker build -t "${IMAGE_NAME}":${IMAGE_TAG} .
                """
            }
         } 
