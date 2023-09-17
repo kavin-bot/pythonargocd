@@ -19,16 +19,6 @@ agent any
            }
         } 
    }
-    stage('checkouts')
-    {
-       steps
-      {
-        script
-          {
-            git branch:'main', url:'https://github.com/kavin-bot/pythonargocd.git'
-           }
-        } 
-   }
     stage('docker build ')
     {
        steps
@@ -60,6 +50,20 @@ agent any
            // docker.withRegistry('',REGISTRY_CREDS)
             //docker_image.push("$BUILD_NUMBER")
             //docker_image.push('latest')
+           }
+        } 
+   }
+    stage('update the deployment file')
+    {
+       steps
+      {
+        script
+          {
+            sh"""
+            cat deployment.yaml
+            sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+            cat deployment.yaml
+            """
            }
         } 
    }
